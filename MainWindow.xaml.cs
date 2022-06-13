@@ -22,22 +22,10 @@ namespace To_do_List
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		private BindingList<To_do_Model> _todoData;
+		private BindingList<To_do_Model> todoData;
 		public MainWindow()
 		{
 			InitializeComponent();
 		}
-
-		private void Window_Loaded(object sender, RoutedEventArgs e)
-		{
-			_todoData = new BindingList<To_do_Model>()
-			{
-				new To_do_Model(){taskText = "Test" },
-				new To_do_Model(){taskText = "Test2" }
-			};
-			dgTodoList.ItemsSource = _todoData;
-		}
-
 	}
 }
-
