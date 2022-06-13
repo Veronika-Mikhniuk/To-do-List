@@ -9,9 +9,9 @@
     <Grid>
 		<DataGrid x:Name="dgTodoList" FontSize="16" FontWeight="Bold" Margin="10">
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Creation Date" Width="180"/>
-				<DataGridCheckBoxColumn Header="Done" Width="80"/>
-				<DataGridTextColumn Header="Task" Width="*"/>
+				<DataGridTextColumn IsReadOnly ="False" Header="Creation Date" Width="180"/>
+				<DataGridCheckBoxColumn IsReadOnly="True" Header="Done" Width="80"/>
+				<DataGridTextColumn IsReadOnly="True" Header="Task" Width="*"/>
 			</DataGrid.Columns>
 		</DataGrid>
     </Grid>
