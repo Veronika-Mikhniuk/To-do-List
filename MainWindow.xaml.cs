@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using To_do_List.Models;
 
 namespace To_do_List
 {
@@ -20,6 +22,7 @@ namespace To_do_List
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private BindingList<To_do_Model> todoData;
 		public MainWindow()
 		{
 			InitializeComponent();
