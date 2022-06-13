@@ -23,9 +23,5 @@ namespace To_do_List.Models
 			get { return _taskText; }
 			set { _taskText = value; }
 		}
-
-
-
-
 	}
 }
