@@ -28,15 +28,27 @@ namespace To_do_List
 		{
 			InitializeComponent();
 		}
-		private void Window_Loaded(object sender, RoutedEventArgs e)
+		//private void Window_Loaded(object sender, RoutedEventArgs e)
+		//{
+		//	_todoData = new BindingList<To_do_Model>()
+		//	{
+		//		new To_do_Model(){taskText = "Test" },
+		//		new To_do_Model(){taskText = "Test2" }
+		//	};
+		//	dgTodoList.ItemsSource = _todoData;
+		//}
+
+		private void Window_Loaded_1(object sender, RoutedEventArgs e)
 		{
 			_todoData = new BindingList<To_do_Model>()
 			{
 				new To_do_Model(){taskText = "Test" },
 				new To_do_Model(){taskText = "Test2" }
 			};
-			dgTodoList.ItemsSource = _todoData;
-		}
 
+			dgTodoList.Items.Clear();
+			dgTodoList.ItemsSource = _todoData;
+		
+		}
 	}
 }
