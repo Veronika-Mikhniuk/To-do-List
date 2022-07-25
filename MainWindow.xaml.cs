@@ -23,32 +23,50 @@ namespace To_do_List
 	public partial class MainWindow : Window
 	{
 
-		private BindingList<To_do_Model> _todoData;
+		private BindingList<To_do_Model> _todoDataList;
 		public MainWindow()
 		{
 			InitializeComponent();
 		}
-		//private void Window_Loaded(object sender, RoutedEventArgs e)
-		//{
-		//	_todoData = new BindingList<To_do_Model>()
-		//	{
-		//		new To_do_Model(){taskText = "Test" },
-		//		new To_do_Model(){taskText = "Test2" }
-		//	};
-		//	dgTodoList.ItemsSource = _todoData;
-		//}
+		
 
 		private void Window_Loaded_1(object sender, RoutedEventArgs e)
 		{
-			_todoData = new BindingList<To_do_Model>()
+			_todoDataList = new BindingList<To_do_Model>()
 			{
 				new To_do_Model(){taskText = "Test" },
 				new To_do_Model(){taskText = "Test2" }
 			};
 
 			dgTodoList.Items.Clear();
-			dgTodoList.ItemsSource = _todoData;
-		 //проверка соединения с Git check
+			dgTodoList.ItemsSource = _todoDataList;
+            _todoDataList.ListChanged += _todoDataList_ListChanged;//Реагирование на изменение списка
+		 
 		}
-	}
+
+        private void _todoDataList_ListChanged(object sender, ListChangedEventArgs e) //событие сгенерировалось атоматически ВС - для сохранения на диск даных об изменении
+        {
+            switch (e.ListChangedType)
+            {
+                case ListChangedType.Reset:
+                    break;
+                case ListChangedType.ItemAdded:
+                    break;
+                case ListChangedType.ItemDeleted:
+                    break;
+                case ListChangedType.ItemMoved:
+                    break;
+                case ListChangedType.ItemChanged:
+                    break;
+                case ListChangedType.PropertyDescriptorAdded:
+                    break;
+                case ListChangedType.PropertyDescriptorDeleted:
+                    break;
+                case ListChangedType.PropertyDescriptorChanged:
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }
