@@ -48,7 +48,7 @@ namespace To_do_List
 
 			dgTodoList.Items.Clear();
 			dgTodoList.ItemsSource = _todoData;
-		
+		 //проверка соединения с Git
 		}
 	}
 }
