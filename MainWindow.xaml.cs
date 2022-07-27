@@ -46,27 +46,11 @@ namespace To_do_List
 
         private void _todoDataList_ListChanged(object sender, ListChangedEventArgs e) //событие сгенерировалось атоматически ВС - для сохранения на диск даных об изменении
         {
-            switch (e.ListChangedType)
-            {
-                case ListChangedType.Reset:
-                    break;
-                case ListChangedType.ItemAdded:
-                    break;
-                case ListChangedType.ItemDeleted:
-                    break;
-                case ListChangedType.ItemMoved:
-                    break;
-                case ListChangedType.ItemChanged:
-                    break;
-                case ListChangedType.PropertyDescriptorAdded:
-                    break;
-                case ListChangedType.PropertyDescriptorDeleted:
-                    break;
-                case ListChangedType.PropertyDescriptorChanged:
-                    break;
-                default:
-                    break;
+            if (e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted || e.ListChangedType == ListChangedType.ItemChanged)
+            { 
+            
             }
+            
         }
     }
 }
