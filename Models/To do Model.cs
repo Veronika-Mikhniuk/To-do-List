@@ -15,14 +15,26 @@ namespace To_do_List.Models
         public bool taskIsDone //свойство для поля со статусом выпонения задачи
 		{
 			get { return _taskIsDone; }
-			set { _taskIsDone = value; }
+			set 
+			{ 
+				if (_taskIsDone == value)
+					return;
+				_taskIsDone = value;
+				OnPropertyChanged("taskIsDone");
+			}
 		}
 
 		
 		public string taskText //свойство для поля с текстом задачи
 		{
 			get { return _taskText; }
-			set { _taskText = value; }
+			set 
+			{
+				if (value == _taskText)
+					return;
+				_taskText = value;
+				OnPropertyChanged("taskText");
+			}
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
