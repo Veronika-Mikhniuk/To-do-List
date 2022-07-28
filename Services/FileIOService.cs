@@ -32,7 +32,7 @@ namespace To_do_List.Services
             }
         }
 
-        public void SavData(BindingList<To_do_Model> _todoDataList)
+        public void SaveData(object _todoDataList)
         {
             using (StreamWriter writer = File.CreateText(PATH))
             {

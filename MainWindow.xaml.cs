@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using To_do_List.Models;
+using To_do_List.Services;
 
 namespace To_do_List
 {
@@ -22,8 +23,9 @@ namespace To_do_List
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-
+		private readonly string PATH = $"{Environment.CurrentDirectory}\\todoDataList.Json";
 		private BindingList<To_do_Model> _todoDataList;
+		private FileIOService _fileIOService;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -32,11 +34,16 @@ namespace To_do_List
 
 		private void Window_Loaded_1(object sender, RoutedEventArgs e)
 		{
-			_todoDataList = new BindingList<To_do_Model>()
+			_fileIOService = new FileIOService(PATH);
+			try
 			{
-				new To_do_Model(){taskText = "Test" },
-				new To_do_Model(){taskText = "Test2" }
-			};
+				_todoDataList = _fileIOService.LoadData();
+			}
+            catch (Exception ex)
+            {
+				MessageBox.Show(ex.Message);
+				Close();
+            }
 
 			dgTodoList.Items.Clear();
 			dgTodoList.ItemsSource = _todoDataList;
@@ -47,9 +54,17 @@ namespace To_do_List
         private void _todoDataList_ListChanged(object sender, ListChangedEventArgs e) //событие сгенерировалось атоматически ВС - для сохранения на диск даных об изменении
         {
             if (e.ListChangedType == ListChangedType.ItemAdded || e.ListChangedType == ListChangedType.ItemDeleted || e.ListChangedType == ListChangedType.ItemChanged)
-            { 
-            
-            }
+            {
+				try
+				{
+					_fileIOService.SaveData(sender);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+					Close();
+				}
+			}
             
         }
     }
